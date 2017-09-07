@@ -110,6 +110,8 @@ docker build -t imagemName pathDockerFile
 docker inspect containerName
 ```
 
+
+
 - **COMPOSER UP** executa arquivo **docker-composer.yml**
 ```shell
 docker-compose up
@@ -133,6 +135,11 @@ docker pull mysql
 ```shell
 docker run --name databse -e MYSQL_ROOT_PASSWORD=root -d mysql
 ```
+- Cria um **container** mapeando um diretório
+ - **-v**
+```shell
+docker run -it -v pathOrigin:pathDest ubuntu bash
+```
 
 # DOCKERFILE
 - Criar aquivo com nome **Dockerfile**
@@ -155,12 +162,15 @@ CMD ["/usr/bin/sbin/apache2ctl", -D", "FOREGROUND"]
 - Criar aquivo com nome **docker-composer.yml**
  - **containerName** | Nome do container
   - **imageName** | Nome da imagem
+  - **volumes** | Local dos volumes
   - **environment** | Variaveis de ambiente
   - **links** | Link containers
   - **ports** | Mapeamento de portas
 ```yml
 containerName: 
  image: imageName
+ volumes: 
+  - originPath:containerPath
  environment: 
   - VARIABLE_NAME=VALUE
  links:
